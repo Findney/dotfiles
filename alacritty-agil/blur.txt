@@ -1,0 +1,15 @@
+We can't use like Picom to blur apps in GNOME. 
+But, we can blur apps alternatively use GNOME extension 
+called Blur my Shell. 
+ - Name: Blur my Shell
+ - Link: https://github.com/aunetx/blur-my-shell
+
+My Configuration for application setting in Blur my Shell:
+ - first we need to turn on Window list extension blur feature
+ - after that, turn on Application blur feature
+ - then, turn on custom properties with configuration:
+             - sigma : 18
+             - brightness : 0.84
+ - the next, set opacity to 200
+ - and the last one, add window you want to blur in whitelist feature
+ 
