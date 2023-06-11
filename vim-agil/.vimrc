@@ -110,8 +110,11 @@ set backspace=indent,eol,start
 " Support encoding 
 set encoding=utf-8
 
+" Set backup dir
+set backupdir=~/.vim/backup//
+
 " Allow to undo changes to a file even after saving it
-"set undodir=~/.vim/backup/temp_dirs/undodir
+set undodir=~/.vim/temp_dirs/undodir//
 set undofile
 
 " Display cursorline and cursorcolumn only in active window
