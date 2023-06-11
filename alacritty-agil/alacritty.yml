@@ -1,6 +1,5 @@
 import:
-  #- ~/.config/alacritty/themes/themes/Cobalt2.yaml
-  - ~/.config/alacritty/argonaut.yml
+  - ~/Documents/github/dotfiles/alacritty-agil/argonaut.yml
 
 window:
   padding:
