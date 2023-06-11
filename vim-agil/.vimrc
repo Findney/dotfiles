@@ -12,14 +12,6 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
-"nyntax on
-"set mouse=a
-"set number
-"set relativenumber
-"set cursorline
-"set cursorcolomn
-    
-
 " SET SETTINGS ---------------------------------------------------------------- {{{
 
 " set code goes here.
@@ -48,7 +40,7 @@ filetype on
 filetype plugin on
 
 " Load an indent file for the detected file type.
-"filetype indent on
+filetype indent on
 
 " number of spaces in a <Tab>
 set tabstop=4
