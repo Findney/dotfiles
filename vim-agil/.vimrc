@@ -223,7 +223,7 @@ nnoremap <leader>p :Prettier<CR>
 let NERDTreeIgnore=['\.jpg$', '\.mp4$', '\.ogg$', '\.iso$', '\.pdf$', '\.pyc$', '\.odt$', '\.png$', '\.gif$', '\.db$']
 
 " Searches current selection
-vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
+nnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
 vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 
 " Open file manager (BETA)
@@ -250,7 +250,9 @@ inoremap $2 []<ESC>i
 inoremap $3 {}<ESC>i
 inoremap $4 {<ESC>o}<ESC>O
 inoremap $q ""<ESC>i
-inoremap $e ''<ESC>i
+inoremap $e ''<ESC>i 
+
+" VCoolor toggle (like color picker)
 
 " }}}
 
