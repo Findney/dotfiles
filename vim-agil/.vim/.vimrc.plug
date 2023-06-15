@@ -1,34 +1,36 @@
 " Call plugin
-call plug#begin ('~/.vim/plugged)
+call plug#begin ('~/.vim/plugged')
 
-" vim-monokai-tasty theme 
-Plug 'patstockwell/vim-monokai-tasty' 
+" vim-monokai-tasty theme
+Plug 'patstockwell/vim-monokai-tasty'
 
-" Make your Vim as smart like VSCode 
+" Make your Vim as smart like VSCode
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  
+source './conf/coc.vim' " configuration file for coc.nvim plugin
+
 " Comment and uncomment lines
 Plug 'preservim/nerdcommenter'
 
-" Directory tree 
+" Directory tree
 Plug 'scrooloose/nerdtree'
 
-" Syntax highlighting for language  
+" Syntax highlighting for language
 Plug 'sheerun/vim-polyglot'
 
-"  
-"Plug 'mattn/emmet-vim'
-  
-"  
-Plug 'username/plugin-name'
+" A light and configurable statusline/tabline plugin
+Plug 'itchyny/lightline.vim'
 
-"  
-Plug 'username/plugin-name'
+" Formatter 
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install --frozen-lockfile --production',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
 
-"  
-Plug 'username/plugin-name'
+" Plugin that allows using a color picker/selector directly from the editor
+Plug 'KabbAmine/vCoolor.vim'"
 
-"  
-Plug 'username/plugin-name'
+" Plugin for expanding abbreviations
+Plug 'mattn/emmet-vim'
 
+" Plug end
 call plug#end()
+
