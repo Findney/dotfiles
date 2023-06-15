@@ -6,7 +6,8 @@ Plug 'patstockwell/vim-monokai-tasty'
 
 " Make your Vim as smart like VSCode
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-source './conf/coc.vim' " configuration file for coc.nvim plugin
+" configuration file for coc.nvim plugin
+source ~/.vim/conf/coc.vim 
 
 " Comment and uncomment lines
 Plug 'preservim/nerdcommenter'

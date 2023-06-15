@@ -1,5 +1,5 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                                                                                  "
+""                                                                                  "
 "                                                                                  "
 "            ███████╗██╗███╗   ██╗██████╗ ███╗   ██╗███████╗██╗   ██╗              "
 "            ██╔════╝██║████╗  ██║██╔══██╗████╗  ██║██╔════╝╚██╗ ██╔╝              "
@@ -10,7 +10,6 @@
 "                                                                                  "
 "                                                                                  "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 
 " SET SETTINGS ---------------------------------------------------------------- {{{
 
@@ -69,7 +68,7 @@ set cursorline
 " Highlight cursor line underneath the cursor vertically.
 set cursorcolumn
 " Higlight right margin
-set colorcolumn=130
+"set colorcolumn=130
 " Coloring
 "highlight ColorColumn ctermbg=16
 
@@ -77,7 +76,7 @@ set colorcolumn=130
 set background=dark
 
 "Do not save backup files.
-se nobackup
+set backup
 
 " Do not jrap lines. Allow long lines to extend as far as the line goes.
 set wrap
@@ -131,23 +130,11 @@ set foldcolumn=1
 
 
 " PLUGINS ---------------------------------------------------------------- {{{
-
-" Call the myplugin.plug file
-"let myplugin_file = expand('~/.vim/.vimrc.plug')
-"if filereadable(myplugin_file)
-"    source myplugin_file
-"else 
-"    echomsg("ERROR READING FILE " . myplugin_file)
-"endif
-
-"let myplugin_file = '~/.vim/.vimrc.plug'
-"if filereadable(expand(myplugin_file))
-"     source myplugin_file
-"else
-"     echomsg("ERROR READING FILE " . myplugin_file)
-"endif
-
-
+"
+if filereadable(expand("~/.vim/.vimrc.plug"))
+     source ~/.vim/.vimrc.plug
+else
+endif
 
 " }}}
 
@@ -167,8 +154,7 @@ nnoremap <silent> <leader>w :w!<CR>
 nnoremap <silent> <leader>/ :noh<CR>
 
 " To sourcing mapping
-nnoremap <silent> <leader>sc :source /etc/vimrc<CR>
-
+nnoremap <silent> <leader>sc :source ~/.vimrc<CR>
 
 " Press \p to print the current file to the default printer from a Linux operating system.
 
@@ -229,10 +215,9 @@ nnoremap <leader>te :tabedit <C-r>=escape(expand("%:p:h"), " ")<CR>/
 
 " Toggle to open and close NERDTree
 nnoremap <silent> <leader>t :NERDTree<CR>
-nnoremap <leader>gd <Plug>(coc-definition)
-nnoremap <leader>gr <Plug>(coc-references)
 nnoremap <leader><leader>c :call nerdcommenter#Comment(0,"toggle")<CR>
-nnoremap <leader><leader>c :call nerdcommenter#Comment(0,"toggle")<CR>
+vnoremap <leader><leader>c :call nerdcommenter#Comment(0,"toggle")<CR>
+nnoremap <leader>p :Prettier<CR>
 
 " NERDTree ignore certain files
 let NERDTreeIgnore=['\.jpg$', '\.mp4$', '\.ogg$', '\.iso$', '\.pdf$', '\.pyc$', '\.odt$', '\.png$', '\.gif$', '\.db$']
@@ -294,13 +279,16 @@ colorscheme vim-monokai-tasty
 " VIMSCRIPT -------------------------------------------------------------- {{{
 
 " Display the friendly cute emoticon when open vim
-autocmd VimEnter * echo "        ( ͡° ͜ʖ ͡°)     ƪ(˘⌣˘)ʃ    (>^ . ^<) "
+autocmd VimEnter * echo "ngoding boss        ( ͡° ͜ʖ ͡°)     ƪ(˘⌣˘)ʃ    (>^ . ^<) "
 
 " Auto back to last position kursor during edit file when open edited file
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
+" Auto format the code
+"au VimEnter * Prettier
+
 " Auto reload of virmc config (BETA)
-"autocmd! BufWritePost ~/.vim/.vimrc source ~/.vim/.vimrc 
+autocmd! BufWritePost ~/.vim/.vimrc source ~/.vim/.vimrc 
 
 " This will enable code folding and use the marker method of folding.
 augroup filetype_vim
@@ -308,13 +296,16 @@ augroup filetype_vim
     autocmd FileType vim setlocal foldmethod=marker
 augroup END
 
-" If the current file type is HTML
+" This group for HTML file
 augroup htmlAutocmds
     autocmd!
     autocmd FileType html silent! autocmd BufWritePre <buffer> normal! gg=G
     autocmd FileType html silent! autocmd BufReadPost <buffer> setlocal shiftwidth=4 tabstop=4 expandtab
-augroup END
 
+  " Define key mapping for HTML template
+autocmd FileType html nnoremap <leader>ht :silent! execute 'normal!i\|' \| put = '<!DOCTYPE html>' \| put ='<html>'\| put ='<head>' \| put ='<title></title>' \| put ='<link rel=\"stylesheet\" href=\"style.css\">' \| put ='</head>' \| put ='<body>' \| put ='</body>' \| put ='</html>' \| 1 \| delete _\| Prettier<CR>
+
+augroup END
 
 function! CmdLine(str)
     call feedkeys(":" . a:str)
@@ -343,32 +334,31 @@ func! CurrentFileDir(cmd)
     return a:cmd . " " . escape(expand("%:p:h"), " ") . "/"
 endfunc
 
+" Very userful when code
+let g:user_emmet_leader_key='<C-e>'
+
+let g:user_emmet_settings = {
+\  'variables': {'lang': 'ja'},
+\  'html': {
+\    'default_attributes': {
+\      'option': {'value': v:null},
+\      'textarea': {'id': v:null, 'name': v:null, 'cols': 10, 'rows': 10},
+\    },
+\    'snippets': {
+\      'html:5': "<!DOCTYPE html>\n"
+\              ."<html lang=\"${lang}\">\n"
+\              ."<head>\n"
+\              ."\t<meta charset=\"${charset}\">\n"
+\              ."\t<title></title>\n"
+\              ."\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n"
+\              ."</head>\n"
+\              ."<body>\n\t${child}|\n</body>\n"
+\              ."</html>",
+\    },
+\  },
+\}
+
 
 " }}}
-
-
-" STATUS LINE ------------------------------------------------------------ {{{
-
-" Status bar code goes here.
-
-" Clear status line when vimrc is reloaded.
-set statusline=
-
-" Status line left side.
-set statusline=%F%m%r%h%w
-
-" Use a divider to separate the left side from the right side.
-set statusline+=%=
-
-" Status line right side.
-set statusline+=[FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ [BUFFER=%n]\ %{strftime('%c')}
-
-" Show the status on the second to last line.
-set laststatus=2
-
-
-" }}}
-
-
 
 
