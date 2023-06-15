@@ -1,24 +1,24 @@
 " Call plugin
 call plug#begin ('~/.vim/plugged)
 
-"  
-Plug 'username/plugin-name'
+" vim-monokai-tasty theme 
+Plug 'patstockwell/vim-monokai-tasty' 
+
+" Make your Vim as smart like VSCode 
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  
+" Comment and uncomment lines
+Plug 'preservim/nerdcommenter'
+
+" Directory tree 
+Plug 'scrooloose/nerdtree'
+
+" Syntax highlighting for language  
+Plug 'sheerun/vim-polyglot'
 
 "  
-Plug 'username/plugin-name'
-
-"  
-Plug 'username/plugin-name'
-
-"  
-Plug 'username/plugin-name'
-
-"  
-Plug 'username/plugin-name'
-
-"  
-Plug 'username/plugin-name'
-
+"Plug 'mattn/emmet-vim'
+  
 "  
 Plug 'username/plugin-name'
 

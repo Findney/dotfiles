@@ -229,6 +229,10 @@ nnoremap <leader>te :tabedit <C-r>=escape(expand("%:p:h"), " ")<CR>/
 
 " Toggle to open and close NERDTree
 nnoremap <silent> <leader>t :NERDTree<CR>
+nnoremap <leader>gd <Plug>(coc-definition)
+nnoremap <leader>gr <Plug>(coc-references)
+nnoremap <leader><leader>c :call nerdcommenter#Comment(0,"toggle")<CR>
+nnoremap <leader><leader>c :call nerdcommenter#Comment(0,"toggle")<CR>
 
 " NERDTree ignore certain files
 let NERDTreeIgnore=['\.jpg$', '\.mp4$', '\.ogg$', '\.iso$', '\.pdf$', '\.pyc$', '\.odt$', '\.png$', '\.gif$', '\.db$']
@@ -282,11 +286,8 @@ cno $c e <C-\>eCurrentFileDir("e")<cr>
 
 " COLORS ----------------------------------- {{{
 
-colorscheme slate
-
-
-
-
+"colorscheme slate
+colorscheme vim-monokai-tasty 
 " }}}
 
 
