@@ -364,3 +364,11 @@ let g:user_emmet_settings = {
 " }}}
 
 
+" STATUS LINE ------------------------------------------------------------ {{{
+
+" Status bar code goes here.
+
+" Show the status on the second to last line.
+set laststatus=2
+
+" }}}
