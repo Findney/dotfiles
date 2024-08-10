@@ -1,0 +1,82 @@
+import = ["/home/agil/.config/alacritty/argonaut.toml"]
+live_config_reload = true
+
+[cursor]
+blink_interval = 750
+blink_timeout = 5
+unfocused_hollow = true
+
+[cursor.style]
+blinking = "Always"
+shape = "Block"
+
+[font]
+# Unused config key
+#  background = "None"
+
+[font.bold]
+family = "JetBrainsMono"
+style = "Bold"
+
+[font.bold_italic]
+family = "JetBrainsMono"
+style = "Bold Italic"
+
+[font.italic]
+family = "JetBrainsMono"
+style = "Italic"
+
+[font.normal]
+family = "JetBrainsMono"
+style = "Regular"
+
+[[keyboard.bindings]]
+action = "SpawnNewInstance"
+key = "N"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+action = "Quit"
+key = "Q"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+action = "Copy"
+key = "C"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+action = "Paste"
+key = "V"
+mods = "Control|Shift"
+
+[mouse]
+hide_when_typing = true
+
+[[mouse.bindings]]
+action = "Paste"
+mods = "Control|Shift"
+mouse = "Left"
+
+[selection]
+save_to_clipboard = true
+semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
+
+[shell]
+program = "/usr/bin/zsh"
+
+[window]
+decorations = "none"
+dynamic_padding = true
+# Unused config key
+#  history = 10000
+#  multiplier = 3
+opacity = 0.8
+
+[window.class]
+general = "Alacritty"
+instance = "Alacritty"
+
+[window.padding]
+x = 4
+y = 4
