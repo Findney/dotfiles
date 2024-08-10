@@ -337,7 +337,7 @@ func! CurrentFileDir(cmd)
 endfunc
 
 " Very userful when code
-let g:user_emmet_leader_key='<C-e>'
+"let g:user_emmet_leader_key='<C-e>'
 
 let g:user_emmet_settings = {
 \  'variables': {'lang': 'ja'},
@@ -360,14 +360,41 @@ let g:user_emmet_settings = {
 \  },
 \}
 
+" Set the prettier CLI executable path
+let g:prettier#exec_cmd_path = "~/.vim/plugged/vim-prettier/node_modules/prettier"
+" Max line length that prettier will wrap on: a number or 'auto'
+let g:prettier#config#print_width = 100 " default is 'auto'
+
+" In ~/.vim/ftplugin/javascript.vim, or somewhere similar.
+
+" Fix files with prettier, and then ESLint.
+let b:ale_fixers = ['prettier', 'eslint']
+" Equivalent to the above.
+let b:ale_fixers = {'javascript': ['prettier', 'eslint']}
+
 
 " }}}
 
 
 " STATUS LINE ------------------------------------------------------------ {{{
 
+" Status bar code goes here.
+
+" Clear status line when vimrc is reloaded.
+"set statusline=
+
+" Status line left side.
+"set statusline=%F%m%r%h%w
+
+" Use a divider to separate the left side from the right side.
+"set statusline+=%=
+
+" Status line right side.
+"set statusline+=[FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ [BUFFER=%n]\ %{strftime('%c')}
+
 " Show the status on the second to last line.
 set laststatus=2
 
 " }}}
+
 
